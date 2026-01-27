@@ -6,7 +6,7 @@ export class GeminiService {
   private ai: any;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    this.ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
   }
 
   async generateImage(prompt: string, aspectRatio: ImageAspectRatio): Promise<string> {

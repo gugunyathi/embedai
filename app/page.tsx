@@ -1,20 +1,26 @@
+'use client';
 
-import React, { useState, useCallback } from 'react';
-import { Header } from './components/Header';
-import { PromptInput } from './components/PromptInput';
-import { ImageGrid } from './components/ImageGrid';
-import { LoadingOverlay } from './components/LoadingOverlay';
-import { IMAGE_FORMATS } from './constants';
-import { GeneratedImage, GenerationState } from './types';
-import { geminiService } from './services/geminiService';
+import React, { useState, useCallback, useEffect } from 'react';
+import { sdk } from '@farcaster/miniapp-sdk';
+import { Header } from '@/components/Header';
+import { PromptInput } from '@/components/PromptInput';
+import { ImageGrid } from '@/components/ImageGrid';
+import { LoadingOverlay } from '@/components/LoadingOverlay';
+import { IMAGE_FORMATS } from '@/constants';
+import { GeneratedImage, GenerationState } from '@/types';
+import { geminiService } from '@/services/geminiService';
 
-export default function App() {
+export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
   const [generationState, setGenerationState] = useState<GenerationState>({
     isGenerating: false,
     progress: 0,
   });
+
+  useEffect(() => {
+    sdk.actions.ready();
+  }, []);
 
   const handleGenerate = async (targetPrompt: string) => {
     if (!targetPrompt.trim()) return;
