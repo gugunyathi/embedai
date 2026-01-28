@@ -3,59 +3,67 @@ import { ImageFormat, ImageAspectRatio } from './types';
 
 export const IMAGE_FORMATS: ImageFormat[] = [
   {
-    id: 'landscape_hr',
-    name: 'High-Res Landscape',
-    width: 1536,
-    height: 1024,
-    aspectRatio: ImageAspectRatio.LANDSCAPE,
-    description: 'Perfect for desktop wallpapers and website headers.'
-  },
-  {
-    id: 'square_hr',
-    name: 'Standard Square',
-    width: 1024,
-    height: 1024,
-    aspectRatio: ImageAspectRatio.SQUARE,
-    description: 'Universal format for social media and product shots.'
-  },
-  {
-    id: 'social_og',
-    name: 'Social Banner (OG)',
+    id: 'hero',
+    name: 'hero.png',
     width: 1200,
     height: 630,
     aspectRatio: ImageAspectRatio.WIDE,
-    description: 'Optimized for social media link sharing (Open Graph).'
+    description: 'Social media hero image and Open Graph banner.'
   },
   {
-    id: 'favicon',
-    name: 'App Favicon',
+    id: 'icon',
+    name: 'icon.png',
+    width: 1024,
+    height: 1024,
+    aspectRatio: ImageAspectRatio.SQUARE,
+    description: 'App icon for stores and platforms.'
+  },
+  {
+    id: 'logo',
+    name: 'logo.png',
     width: 84,
     height: 84,
     aspectRatio: ImageAspectRatio.SQUARE,
-    description: 'Small icon for browser tabs and mobile shortcuts.'
+    description: 'Small logo for favicons and compact displays.'
   },
   {
-    id: 'portrait_hr',
-    name: 'High-Res Portrait',
-    width: 1024,
-    height: 1536,
-    aspectRatio: ImageAspectRatio.PORTRAIT,
-    description: 'Ideal for posters and full-page mobile content.'
-  },
-  {
-    id: 'mobile_splash',
-    name: 'Mobile Splash',
-    width: 1284,
-    height: 2778,
-    aspectRatio: ImageAspectRatio.TALL,
-    description: 'Full-screen splash images for iOS and Android.'
-  },
-  {
-    id: 'profile_pic',
-    name: 'Profile Picture',
+    id: 'splash',
+    name: 'splash.png',
     width: 200,
     height: 200,
     aspectRatio: ImageAspectRatio.SQUARE,
-    description: 'Optimized for user avatars and circular icons.'
+    description: 'Profile pictures and avatar images.'
+  },
+  {
+    id: 'screenshot_portrait',
+    name: 'screenshot-portrait.png',
+    width: 1024,
+    height: 1536,
+    aspectRatio: ImageAspectRatio.PORTRAIT,
+    description: 'Portrait mode app screenshots.'
+  },
+  {
+    id: 'screenshot',
+    name: 'screenshot.png',
+    width: 1284,
+    height: 2778,
+    aspectRatio: ImageAspectRatio.TALL,
+    description: 'iPhone 14 Pro Max screenshot format.'
+  },
+  {
+    id: 'screenshot2',
+    name: 'screenshot2.png',
+    width: 1170,
+    height: 2532,
+    aspectRatio: ImageAspectRatio.TALL,
+    description: 'iPhone 14 Pro screenshot format.'
+  },
+  {
+    id: 'screenshot3',
+    name: 'screenshot3.png',
+    width: 1170,
+    height: 2532,
+    aspectRatio: ImageAspectRatio.TALL,
+    description: 'iPhone 14 Plus screenshot format.'
   }
 ];

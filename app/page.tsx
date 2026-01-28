@@ -46,18 +46,28 @@ export default function Home() {
           currentFormatName: `Generating ${format.name}...`,
         }));
 
-        const imageUrl = await geminiService.generateImage(targetPrompt, format.aspectRatio);
-        
-        const newImage: GeneratedImage = {
-          formatId: format.id,
-          url: imageUrl,
-          prompt: targetPrompt,
-          timestamp: Date.now(),
-        };
-        
-        results.push(newImage);
-        // Update incrementally for better UX
-        setGeneratedImages([...results]);
+        try {
+          const imageUrl = await geminiService.generateImage(targetPrompt, format.aspectRatio, format.id);
+          
+          const newImage: GeneratedImage = {
+            formatId: format.id,
+            url: imageUrl,
+            prompt: targetPrompt,
+            timestamp: Date.now(),
+          };
+          
+          results.push(newImage);
+          // Update incrementally for better UX
+          setGeneratedImages([...results]);
+
+          // Add meaningful delay between requests for free tier (approx 10-15s per image)
+          if (i < IMAGE_FORMATS.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 15000));
+          }
+        } catch (err) {
+            console.error(`Failed to generate ${format.name}`, err);
+            // Continue to next image instead of failing completely
+        }
       }
 
       setGenerationState({
@@ -79,7 +89,7 @@ export default function Home() {
       
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-6 sm:mt-8 lg:mt-12">
         <div className="flex flex-col items-center gap-6 sm:gap-8 lg:gap-12">
-          <FormatShowcase />
+          <FormatShowcase generatedImages={generatedImages} />
           
           <PromptInput 
             prompt={prompt}
